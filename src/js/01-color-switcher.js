@@ -9,16 +9,17 @@ function getRandomHexColor() {
     .padStart(6, 0)}`;
 };
 btnStart.addEventListener('click', () => {
+  btnStart.disabled = true;
   Interval = setInterval(() => {
     body.style.background = getRandomHexColor();
   }, 1000);
 
-  btnStart.setAttribute('disabled', 'disabled');
-  btnStop.removeAttribute('disabled');
+  btnStart.disabled = true;;
+  btnStop.disabled = false;
 });
 
 btnStop.addEventListener('click',() => {
-  btnStart.removeAttribute('disabled');
-  btnStop.setAttribute('disabled', 'disabled');
+  btnStart.disabled = false;
+  btnStop.disabled = true;
   clearInterval(Interval);
 });
