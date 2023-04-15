@@ -8,6 +8,7 @@ function getRandomHexColor() {
     .toString(16)
     .padStart(6, 0)}`;
 };
+
 btnStart.addEventListener('click', () => {
   btnStart.disabled = true;
   Interval = setInterval(() => {
