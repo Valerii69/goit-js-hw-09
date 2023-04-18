@@ -27,17 +27,19 @@ btnStart.disabled = true;
 flatpickr(imputDatePickerData, options);
 btnStart.addEventListener('click', onBtnStart);
 
-window.addEventListener('keydown', onKeydown => {
-  if (onKeydown.code === 'Escape' && timerId) {
-    clearInterval(timerId);
-    imputDatePickerData.removeAttribute('disabled');
-    btnStart.disabled = true;
-    secondsData.textContent = '00';
-    minutesData.textContent = '00';
-    hoursData.textContent = '00';
-    daysData.textContent = '00';
-  }
-});
+// adding a listener to"Esc"
+// window.addEventListener('keydown', onKeydown => {
+//   if (onKeydown.code === 'Escape' && timerId) {
+//     clearInterval(timerId);
+//     imputDatePickerData.removeAttribute('disabled');
+//     btnStart.disabled = true;
+//     secondsData.textContent = '00';
+//     minutesData.textContent = '00';
+//     hoursData.textContent = '00';
+//     daysData.textContent = '00';
+//   }
+// }
+// );
 
 function convertMs(ms) {
   // Number of milliseconds per unit of time
@@ -87,11 +89,10 @@ function startTimer() {
 
   timeDifference -= 1000;
 
-  if (secondsData.textContent <= 0 && minutesData.textContent <= 0) {
+  if (timeDifference <= 0) {
     Notiflix.Notify.success('Time end');
     clearInterval(timerId);
-  } 
-  else {
+  } else {
     formatDate = convertMs(timeDifference);
     renderDate(formatDate);
   }
