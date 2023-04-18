@@ -50,6 +50,10 @@ function convertMs(ms) {
   const day = hour * 24;
 
   // Remaining days
+  function pad(value) {
+  return String(value).padStart(2, '0');
+}
+
   const days = pad(Math.floor(ms / day));
 
   // Remaining hours
@@ -62,9 +66,6 @@ function convertMs(ms) {
   return { days, hours, minutes, seconds };
 }
 
-function pad(value) {
-  return String(value).padStart(2, '0');
-}
 
 function onclick() {
   timerId = setInterval(startTimer, 1000);
